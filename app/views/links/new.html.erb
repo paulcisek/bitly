@@ -1,9 +1,16 @@
-<h1>New link</h1>
-
-<%= render 'form' %>
-
-<%= form_for @link, url: {action: "create"} do |f| %>
-    <%= f.text_field :long_link %>
-    <%= f.submit "Shorten" %>
-<% end %>
-<%= link_to 'Back', links_path %>
+<div class="container-fluid">
+    <h1>Bitlier</h1>
+    <div class="form_holder">
+        <%= render 'form'%>
+    </div>
+    <div class="table_holder">
+        <table class="table table-striped">
+        <% unless current_user.nil?  %>
+            <%= will_paginate @links %>
+            <%= render 'links/link', object: @links %>
+        <% else %>
+            <%= render 'links/link', object: @link_to_show %>
+        <% end %>
+        </table>
+    </div>
+</div>

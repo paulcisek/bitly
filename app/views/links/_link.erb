@@ -1,0 +1,12 @@
+<% unless object.nil? %>
+    <tr class="header">
+        <th id="long">Long Link</th>
+        <th id="short">Short Link</th>
+    </tr>
+    <% object.each do |link| %>
+        <tr>
+            <td><%=truncate(link.long_link, length: 50)%></th>
+            <td><%=link.short_link%></th>
+        </tr>
+    <% end %>
+<% end %>

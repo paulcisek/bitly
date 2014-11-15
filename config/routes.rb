@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-
-  get 'static_pages/about'
 
   root 'links#new'
-  resources :links
-  post 'links/search'
+
+  get '/', to: 'links#new', as: :new_link
+  resources :links, only: [:new,:create]
+
   devise_for :users
   devise_scope :user do
     get "log_in", to: "devise/sessions#new"
     get "sign_up", to: "devise/registrations#new"
   end
+
+  get '/:id', to: 'links#redirect_to_route'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
