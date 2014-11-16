@@ -6,7 +6,7 @@
     <% object.each do |link| %>
         <tr>
             <td><%=truncate(link.long_link, length: 50)%></th>
-            <td><%=link.short_link%></th>
+            <td><%=link_to link.short_link, link.short_link, target: 'blank'%></th>
         </tr>
     <% end %>
 <% end %>
